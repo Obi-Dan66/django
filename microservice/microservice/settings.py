@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from django.conf import settings
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -124,3 +125,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CELERY_BROKER_URL = 'redis://http://127.0.0.1:8000/0'
+CELERY_RESULT_BACKEND = 'redis://http://127.0.0.1:8000/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+CELERY_BEAT_SCHEDULE = {
+    'update-offers-every-minute': {
+        'task': 'products.tasks.update_offers',
+        'schedule': 60.0,
+    },
+}
+
+OFFERS_MS_URL = getattr(settings, 'OFFERS_MS_URL', 'https://applifting-python-excercise-ms.herokuapp.com/api/v1')
