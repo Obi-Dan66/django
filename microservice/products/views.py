@@ -2,8 +2,8 @@ from rest_framework import generics, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import requests
-from .models import Product, Offer
-from .serializers import ProductSerializer, OfferSerializer
+from products.models import Product, Offer
+from products.serializers import ProductSerializer, OfferSerializer
 from django.conf import settings
 
 
