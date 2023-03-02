@@ -16,6 +16,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'microservice.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', # BASE_DIR / 'db.sqlite3',
         'USER':  os.getenv("User"),
         'PASSWORD':  os.getenv("Password"),
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '8000',
     }
 }
 
@@ -146,4 +147,4 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-OFFERS_MS_URL = getattr(settings, 'OFFERS_MS_URL', 'https://applifting-python-excercise-ms.herokuapp.com/api/v1')
+OFFERS_MS_URL = 'https://applifting-python-excercise-ms.herokuapp.com/api/v1'
