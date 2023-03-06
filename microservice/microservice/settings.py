@@ -148,3 +148,13 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 OFFERS_MS_URL = 'https://applifting-python-excercise-ms.herokuapp.com/api/v1'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+}
+
+UPDATE_OFFERS_INTERVAL_SECONDS = 60
+
+ACCESS_TOKEN = os.getenv("ACCES_TOKEN")
